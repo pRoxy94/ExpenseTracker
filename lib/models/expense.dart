@@ -35,6 +35,29 @@ class Expense {
   }
 }
 
+class ExpenseBucket {
+  final Category category;
+  final List<Expense> expenses;
+
+  const ExpenseBucket({
+    required this.category, 
+    required this.expenses
+  });
+
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+  : expenses = allExpenses.where((expense) => expense.category == category).toList();
+
+  double get totalExpenses {
+    double sum = 0;
+
+    for(final expense in expenses) {
+      sum += expense.amount;
+    }
+
+    return sum;
+  }
+}
+
 /// : id = uuid.v4() ---> Initializer list feature: generate unique ID whenever the Expense class is istantiated
 /// this feature can be used to initialize class properties (like 'id') with values that are NOT received as
 /// constructor function args

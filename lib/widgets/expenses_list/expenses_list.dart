@@ -18,6 +18,13 @@ class ExpensesList extends StatelessWidget {
         Dismissible(
           /// key => to uniquely identify a widget
           key: ValueKey(expenses[index]), 
+          background: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+              color: Theme.of(context).colorScheme.error.withOpacity(0.80),
+            )
+          ),
           onDismissed: (direction) {
             onRemoveExpense(expenses[index]);
           },
